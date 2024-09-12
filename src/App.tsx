@@ -1,13 +1,21 @@
-import { PageWrapper, PageSection } from "./styles/app.style";
+import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { PageWrapper } from "@styles/app.style";
+
+import MainPage from "@pages/MainPage";
+import RecruitPage from "@pages/RecruitPage";
+
+import Header from "@components/Header";
+import Footer from "@components/Footer";
 
 const App = () => {
   return (
     <PageWrapper id="main-app">
       <Header />
-      <PageSection id="main-page"></PageSection>
+      <Routes>
+        <Route path="/" Component={MainPage} />
+        <Route path="/recruit" Component={RecruitPage} />
+      </Routes>
       <Footer />
     </PageWrapper>
   );
