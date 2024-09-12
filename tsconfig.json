@@ -19,6 +19,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@consts/*": ["src/consts/*"],
+      "@data/*": ["src/data/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"],
