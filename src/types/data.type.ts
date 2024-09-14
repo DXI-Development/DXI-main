@@ -3,7 +3,9 @@ export type Team = "plan" | "art" | "development" | "music" | "operation";
 export type RecruitPosition = {
   recruitPosition: string;
   recruitCount: number;
-  preference?: string[];
+  responbilities: string;
+  requirements?: string[];
+  preferences?: string[];
 };
 
 export type Recruitment = {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { COLORS } from "@consts/style";
 
-export const TeamWrapper = styled.li`
+export const TeamItem = styled.li`
   display: flex;
   flex-direction: column;
   padding: 24px 16px;
@@ -22,7 +22,7 @@ export const PositionList = styled.ul`
   list-style-type: none;
 `;
 
-export const PositionWrapper = styled.li`
+export const PositionItem = styled.li`
   display: flex;
   flex-direction: column;
 `;
@@ -45,7 +45,48 @@ export const PositionDetails = styled.details`
   }
 
   &[open] > div {
-    margin-top: 16px;
+    margin-top: 32px;
     margin-left: 16px;
+  }
+`;
+
+export const PositionDescriptionsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+`;
+
+export const PositionDescriptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+`;
+
+export const PositionDescriptionTitle = styled.span`
+  font-size: 1.4rem;
+  font-weight: 700;
+`;
+
+export const PositionDescriptionList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  list-style-type: "-";
+`;
+
+export const PositionDescriptionItem = styled.li`
+  padding-left: 8px;
+`;
+
+export const PositionDescriptionItemText = styled.span`
+  font-size: 1.2rem;
+  font-weight: 500;
+`;
+
+export const PositionApplyButtonWrapper = styled.div`
+  display: flex;
+
+  & > a {
+    margin-left: auto;
   }
 `;

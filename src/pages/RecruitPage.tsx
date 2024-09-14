@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import dayjs from "dayjs";
 
 import RecruitTeam from "@components/recruit/RecruitTeam";
@@ -30,6 +31,10 @@ const RecruitPage: FC = () => {
   } = RecruitData as Recruitment;
 
   const teams = Object.keys(data) as Team[];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <PageWrapper>

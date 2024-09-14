@@ -1,7 +1,7 @@
-import RecruitPosition from "./RecruitPosition";
+import RecruitPosition from "@components/recruit/RecruitPosition";
 
 import {
-  TeamWrapper,
+  TeamItem,
   TeamName,
   PositionList,
 } from "@styles/recruit/content.style";
@@ -17,14 +17,14 @@ interface RecruitTeamProps {
 
 const RecruitTeam: FC<RecruitTeamProps> = ({ name, recruitPositions }) => {
   return (
-    <TeamWrapper>
+    <TeamItem>
       <TeamName>{name}</TeamName>
       <PositionList>
         {recruitPositions.map((position, index) => (
           <RecruitPosition key={`${name}-${index + 1}`} position={position} />
         ))}
       </PositionList>
-    </TeamWrapper>
+    </TeamItem>
   );
 };
 

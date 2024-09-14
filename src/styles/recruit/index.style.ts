@@ -6,6 +6,7 @@ import { PageMainWrapper, InnerPage } from "@styles/app.style";
 
 export const PageWrapper = styled(PageMainWrapper)`
   background-color: ${COLORS.themeColor};
+  padding: 32px;
 `;
 
 export const Page = styled(InnerPage)`
