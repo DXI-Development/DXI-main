@@ -19,6 +19,6 @@ export const ButtonWrapper = styled.button`
 
 export const ButtonText = styled.span`
   color: ${COLORS.white};
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
 `;

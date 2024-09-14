@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { PageWrapper } from "@styles/app.style";
 
@@ -9,12 +9,17 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 
 const App = () => {
+  window.addEventListener("beforeunload", () =>
+    window.scroll({ top: 0, left: 0 })
+  );
+
   return (
     <PageWrapper id="main-app">
       <Header />
       <Routes>
         <Route path="/" Component={MainPage} />
         <Route path="/recruit" Component={RecruitPage} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
     </PageWrapper>

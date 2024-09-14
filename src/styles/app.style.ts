@@ -19,7 +19,6 @@ export const PageMainWrapper = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px;
 `;
 
 export const InnerPage = styled.section`
