@@ -7,8 +7,9 @@ const MainFooter: FC = () => {
     <FooterWrapper>
       <Footer>
         <FooterText>
-          Copyright 2024. <strong>Team DXI</strong>. All rights reserved.
+          Copyright 2024. <strong>Studio EDDA</strong>.
         </FooterText>
+        <FooterText>All rights reserved.</FooterText>
       </Footer>
     </FooterWrapper>
   );
