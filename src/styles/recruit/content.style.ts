@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { COLORS } from "@consts/style";
 
-import { tablet, mobile } from "@utils/style.util";
+import { tablet, mobile, xMobile } from "@utils/style.util";
 
 export const TeamItem = styled.li`
   display: flex;
@@ -20,8 +20,12 @@ export const TeamName = styled.span`
     text-align: center;
   }`}
 
+  ${xMobile`{
+    font-size: 1.6rem;  
+  }`}
+
   @media screen and (max-width: 425px) {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -57,6 +61,10 @@ export const PositionDetails = styled.details`
 
     ${mobile`{
       font-size: 1.2rem;  
+    }`}
+
+    ${xMobile`{
+      font-size: 1rem; 
     }`}
 
     @media screen and (max-width: 425px) {
@@ -100,9 +108,12 @@ export const PositionDescriptionsWrapper = styled.div`
   }`}
 
   ${mobile`{
-    row-gap: 24px;
     margin-top: 16px;
     margin-left: 12px;  
+  }`}
+
+  ${xMobile`{
+    row-gap: 16px;  
   }`}
 `;
 
@@ -113,6 +124,11 @@ export const PositionDescriptionWrapper = styled.div`
 
   ${mobile`{
     row-gap: 8px;  
+  }`}
+
+  ${xMobile`{
+    row-gap: 0;
+    line-height: 16px;
   }`}
 `;
 
@@ -126,8 +142,12 @@ export const PositionDescriptionTitle = styled.span`
     font-size: 1.3rem;  
   }`}
 
+  ${xMobile`{
+    font-size: 1rem;  
+  }`}
+
   @media screen and (max-width: 425px) {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
   }
 `;
 
@@ -155,9 +175,13 @@ export const PositionDescriptionItemText = styled.span`
     font-size: 1rem;  
   }`}
 
+  ${xMobile`{
+    font-size: 0.9rem;  
+  }`}
+
   @media screen and (max-width: 425px) {
-    font-size: 0.8rem;
-    line-height: 20px;
+    font-size: 0.7rem;
+    line-height: 16px;
   }
 `;
 

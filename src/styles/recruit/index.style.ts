@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { COLORS } from "@consts/style";
 
-import { tablet, mobile } from "@utils/style.util";
+import { tablet, mobile, xMobile } from "@utils/style.util";
 
 import { PageMainWrapper, InnerPage } from "@styles/app.style";
 
@@ -41,11 +41,15 @@ export const Title = styled.div`
     font-size: 1.2rem;  
   }`}
 
-  @media screen and (max-width: 425px) {
+  ${xMobile`{
     flex-direction: column;
+    align-items: center;  
+  }`}
+
+  @media screen and (max-width: 425px) {
     align-items: center;
     column-gap: 0;
-    row-gap: 8px;
+    row-gap: 4px;
     font-size: 1rem;
   }
 `;
@@ -69,11 +73,15 @@ export const TitleDescription = styled.div`
     font-size: 0.9rem;  
   }`}
 
+  ${xMobile`{
+    text-align: center;
+    line-height: 20px;
+  }`}
+
   @media screen and (max-width: 425px) {
     margin-left: 0;
     font-size: 0.8rem;
     line-height: 20px;
-    text-align: center;
   }
 `;
 
@@ -107,6 +115,10 @@ export const ContentTitle = styled.span`
     font-size: 1.6rem;
     margin-bottom: 16px;  
     text-align: center;
+  }`}
+
+  ${xMobile`{
+    font-size: 1.2rem;  
   }`}
 
   @media screen and (max-width: 425px) {

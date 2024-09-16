@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { mobile } from "@utils/style.util";
+import { mobile, xMobile } from "@utils/style.util";
 
 import { BUTTON_COLORS, COLORS } from "@consts/style";
 
@@ -14,8 +14,12 @@ export const ButtonWrapper = styled.button`
   border-radius: 8px;
   cursor: pointer;
 
+  ${xMobile`{
+    padding: 12px;  
+  }`}
+
   @media screen and (max-width: 425px) {
-    padding: 12px;
+    padding: 8px;
   }
 
   &:hover {
@@ -30,6 +34,10 @@ export const ButtonText = styled.span`
 
   ${mobile`{
     font-size: 1.2rem;  
+  }`}
+
+  ${xMobile`{
+    font-size: 1.1rem;  
   }`}
 
   @media screen and (max-width: 425px) {
