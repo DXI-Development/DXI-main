@@ -11,11 +11,12 @@ import {
 } from "@styles/main/artwork/vertical.style";
 
 import type { FC } from "react";
+import type { ArtworkImagePath } from "@consts/index";
 
 interface ImageSliderProps {
   className: string;
   imageHeight: number;
-  imagePaths: string[];
+  imagePaths: ArtworkImagePath[];
   animationend: boolean;
 }
 
@@ -33,12 +34,6 @@ const ImageVerticalSlider: FC<ImageSliderProps> = ({
 
   const slideWrapperRef = useRef<HTMLDivElement | null>(null);
   const sliderMainImageWrapperRef = useRef<HTMLDivElement | null>(null);
-
-  const getImageFilename = (imagePath: string) => {
-    const splitedPath = imagePath.split("/");
-    const splitedPathLength = splitedPath.length;
-    return splitedPath[splitedPathLength - 1];
-  };
 
   const handleClickImageButton = (index: number) => (e: React.MouseEvent) =>
     setCurrentImageIndex(index);
@@ -125,24 +120,24 @@ const ImageVerticalSlider: FC<ImageSliderProps> = ({
         ref={sliderMainImageWrapperRef}
         height={imageHeight}
       >
-        {imagePaths.map((imagePath) => (
+        {imagePaths.map(({ name, path }) => (
           <SliderMainImage
-            key={`slider-main-${getImageFilename(imagePath)}`}
-            src={imagePath}
+            key={`slider-main-${name}`}
+            src={path}
             height={imageHeight}
-            alt={getImageFilename(imagePath)}
+            alt={name}
           />
         ))}
       </SliderMainImageWrapper>
       <SliderImageButtonWrapper>
-        {imagePaths.map((imagePath, index) => (
+        {imagePaths.map(({ name, path }, index) => (
           <SliderImageButton
-            key={`slider-button-${getImageFilename(imagePath)}`}
+            key={`slider-button-${name}`}
             className={index === currentImageIndex ? "selected" : ""}
             onClick={handleClickImageButton(index)}
           >
             <SliderImageButtonShadow />
-            <SliderImageButtonImage src={imagePath} alt={`artwork-${index}`} />
+            <SliderImageButtonImage src={path} alt={`artwork-${name}`} />
           </SliderImageButton>
         ))}
       </SliderImageButtonWrapper>

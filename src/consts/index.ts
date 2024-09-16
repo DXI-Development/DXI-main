@@ -1,3 +1,8 @@
+export interface ArtworkImagePath {
+  name: string;
+  path: string;
+}
+
 export const TEAM_NAME = "Studio EDDA";
 
 export const CATCH_PHARSE = [
@@ -14,11 +19,10 @@ export const SYNOPSIS = [
   "매니저, 우상(偶像)이자 우상(IDOL)인 신들을 이끌어주기를...",
 ];
 
-export const ARTWORK_IMAGE_PATHS = [
-  "images/artworks/characters/roki.jpeg",
-  "images/artworks/characters/temp/zeus.jpeg",
-  "images/artworks/characters/temp/odin.png",
-  "images/artworks/characters/temp/poseidon.png",
+export const ARTWORK_IMAGE_PATHS: ArtworkImagePath[] = [
+  { name: "제우스", path: "images/artworks/characters/zeus.jpeg" },
+  { name: "포세이돈", path: "images/artworks/characters/poseidon.jpeg" },
+  { name: "로키", path: "images/artworks/characters/roki.jpeg" },
 ];
 
 export const HEADER_LOGO_PATH = "images/logos/studio-header-logo.png";
