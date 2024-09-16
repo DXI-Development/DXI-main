@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Dongle";
+  src: url("assets/fonts/Dongle-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Dongle";
+  src: url("assets/fonts/Dongle-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SongMyung";
+  src: url("assets/fonts/SongMyung-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jua";
+  src: url("assets/fonts/Jua-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Stylish";
+  src: url("assets/fonts/Stylish-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
