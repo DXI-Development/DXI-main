@@ -8,17 +8,23 @@ import {
   SliderImageButton,
   SliderImageButtonImage,
   SliderImageButtonShadow,
-} from "@styles/main/artwork/sliderMK.style";
+} from "@styles/main/artwork/vertical.style";
 
 import type { FC } from "react";
 
 interface ImageSliderProps {
+  className: string;
+  imageHeight: number;
   imagePaths: string[];
   animationend: boolean;
 }
 
-const ImageSliderMK: FC<ImageSliderProps> = ({ imagePaths, animationend }) => {
-  const IMAGE_SIZE = 1200;
+const ImageVerticalSlider: FC<ImageSliderProps> = ({
+  className,
+  imageHeight,
+  imagePaths,
+  animationend,
+}) => {
   const SLIDE_INTERVAL = 3000;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -39,7 +45,7 @@ const ImageSliderMK: FC<ImageSliderProps> = ({ imagePaths, animationend }) => {
       const sliderMainImageWrapper = sliderMainImageWrapperRef.current;
 
       sliderMainImageWrapper.scroll({
-        left: index * IMAGE_SIZE,
+        top: index * imageHeight,
         behavior: "smooth",
       });
     }
@@ -111,15 +117,20 @@ const ImageSliderMK: FC<ImageSliderProps> = ({ imagePaths, animationend }) => {
     return () => {
       intervalIdRef.current && clearInterval(intervalIdRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentImageIndex, imagePaths.length]);
 
   return (
-    <SliderWrapper ref={slideWrapperRef}>
-      <SliderMainImageWrapper ref={sliderMainImageWrapperRef}>
+    <SliderWrapper ref={slideWrapperRef} className={className}>
+      <SliderMainImageWrapper
+        ref={sliderMainImageWrapperRef}
+        height={imageHeight}
+      >
         {imagePaths.map((imagePath) => (
           <SliderMainImage
             key={`slider-main-${getImageFilename(imagePath)}`}
             src={imagePath}
+            height={imageHeight}
             alt={getImageFilename(imagePath)}
           />
         ))}
@@ -140,4 +151,4 @@ const ImageSliderMK: FC<ImageSliderProps> = ({ imagePaths, animationend }) => {
   );
 };
 
-export default ImageSliderMK;
+export default ImageVerticalSlider;

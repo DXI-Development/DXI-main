@@ -2,6 +2,8 @@ import styled, { keyframes } from "styled-components";
 
 import { COLORS } from "@consts/style";
 
+import { tablet, mobile } from "@utils/style.util";
+
 const SliderAnimation = keyframes`
   from {
     transform: translateY(-50px);
@@ -16,12 +18,11 @@ const SliderAnimation = keyframes`
 
 export const SliderWrapper = styled.div`
   display: flex;
-  position: relative;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 32px;
-  row-gap: 48px;
+  padding: 64px 32px;
+  column-gap: 32px;
   background-color: ${COLORS.white};
   border-radius: 4px;
   scroll-snap-align: center;
@@ -29,20 +30,38 @@ export const SliderWrapper = styled.div`
   transform: translateY(-50px);
   opacity: 0;
 
+  ${tablet`{
+    padding: 48px 32px;  
+    column-gap: 16px;
+  }`}
+
   &.show {
     animation: ${SliderAnimation} 1s forwards;
   }
+
+  &.pc-slider {
+    ${mobile`{
+      display: none;  
+    }`}
+  }
+
+  &.mobile-slider {
+    display: none;
+    
+    ${mobile`{
+      display: flex;  
+    }`}
 `;
 
-export const SliderMainImageWrapper = styled.div`
+export const SliderMainImageWrapper = styled.div<{ height: number }>`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  padding: 32px 0;
-  width: 1200px;
-  height: auto;
+  padding: 0 32px;
+  width: auto;
+  height: ${(props) => props.height}px;
   border-radius: 16px;
-  overflow-y: hidden;
+  overflow-x: hidden;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -52,19 +71,28 @@ export const SliderMainImageWrapper = styled.div`
   }
 `;
 
-export const SliderMainImage = styled.img`
-  magin: auto 0;
-  width: 1200px;
-  height: auto;
+export const SliderMainImage = styled.img<{ height: number }>`
+  magin: 0 auto;
+  width: auto;
+  height: ${(props) => props.height}px;
   object-fit: cover;
 `;
 
 export const SliderImageButtonWrapper = styled.div`
-  position: absolute;
-  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+
+  ${tablet`{
+    position: absolute;
+    right: 60px;
+  }`};
 
   & > button:not(:first-child) {
-    margin-left: 32px;
+    margin-top: 32px;
+
+    ${tablet`{
+      margin-top: 24px;
+    }`};
   }
 `;
 
@@ -91,10 +119,15 @@ export const SliderImageButtonShadow = styled.div`
   top: 0;
   left: 0;
   width: 75px;
-  height: 78px;
+  height: 75px;
   background-color: #00000080;
   border-radius: 8px;
   z-index: 2;
+
+  ${tablet`{
+    width: 60px;
+    height: 60px;
+  }`};
 `;
 
 export const SliderImageButtonImage = styled.img`
@@ -102,4 +135,9 @@ export const SliderImageButtonImage = styled.img`
   height: 75px;
   border-radius: 8px;
   fit-content: fill;
+
+  ${tablet`{
+    width: 60px;
+    height: 60px;
+  }`};
 `;

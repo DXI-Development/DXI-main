@@ -1,15 +1,20 @@
 import { useEffect, useRef } from "react";
 
-import { Wrapper, Text } from "@styles/main/motto.style";
+import { LOGO_PATH } from "@consts/index";
+
+import { Wrapper, Image, Text } from "@styles/main/phrase.style";
 
 import type { FC, Dispatch, SetStateAction } from "react";
 
-interface MottoSectionProps {
-  motto: string;
+interface PhraseSectionProps {
+  phrase: string[];
   setAnimationFlag: Dispatch<SetStateAction<boolean>>;
 }
 
-const MottoSection: FC<MottoSectionProps> = ({ motto, setAnimationFlag }) => {
+const PhraseSection: FC<PhraseSectionProps> = ({
+  phrase,
+  setAnimationFlag,
+}) => {
   const wrapperRef = useRef<HTMLElement | null>(null);
 
   const createAnimationendCallback = (children: HTMLCollection) => {
@@ -18,16 +23,22 @@ const MottoSection: FC<MottoSectionProps> = ({ motto, setAnimationFlag }) => {
     let index = 0;
 
     const animationendCallback = () => {
+      const animationListener = () => {
+        index += 1;
+        animationendCallback();
+      };
+
       if (index < CHILDREN_LENGTH) {
         const child = children[index];
 
-        child.addEventListener("animationend", () => {
-          index += 1;
-          animationendCallback();
-        });
+        child.addEventListener("animationend", animationListener);
 
         child.classList.add("show");
       } else {
+        for (const child of children) {
+          child.removeEventListener("animationend", animationListener);
+        }
+
         setAnimationFlag(true);
       }
     };
@@ -47,11 +58,12 @@ const MottoSection: FC<MottoSectionProps> = ({ motto, setAnimationFlag }) => {
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Text>우리가 함께 만들어가는 이야기</Text>
-      <Text>Team DXI</Text>
-      <Text>{motto}!</Text>
+      <Image src={LOGO_PATH} alt="로고 이미지" />
+      {phrase.map((line, index) => (
+        <Text key={`${index}-${line}`}>{line}</Text>
+      ))}
     </Wrapper>
   );
 };
 
-export default MottoSection;
+export default PhraseSection;

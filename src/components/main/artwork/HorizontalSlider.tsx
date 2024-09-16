@@ -8,20 +8,23 @@ import {
   SliderImageButton,
   SliderImageButtonImage,
   SliderImageButtonShadow,
-} from "@styles/main/artwork/sliderHeight.style";
+} from "@styles/main/artwork/horizontal.style";
 
 import type { FC } from "react";
 
 interface ImageSliderProps {
+  className: string;
+  imageWidth: number;
   imagePaths: string[];
   animationend: boolean;
 }
 
-const ImageSliderHeight: FC<ImageSliderProps> = ({
+const ImageHorizontalSlider: FC<ImageSliderProps> = ({
+  className,
+  imageWidth,
   imagePaths,
   animationend,
 }) => {
-  const IMAGE_SIZE = 600;
   const SLIDE_INTERVAL = 3000;
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -42,7 +45,7 @@ const ImageSliderHeight: FC<ImageSliderProps> = ({
       const sliderMainImageWrapper = sliderMainImageWrapperRef.current;
 
       sliderMainImageWrapper.scroll({
-        top: index * IMAGE_SIZE,
+        left: index * imageWidth,
         behavior: "smooth",
       });
     }
@@ -117,12 +120,16 @@ const ImageSliderHeight: FC<ImageSliderProps> = ({
   }, [currentImageIndex, imagePaths.length]);
 
   return (
-    <SliderWrapper ref={slideWrapperRef}>
-      <SliderMainImageWrapper ref={sliderMainImageWrapperRef}>
+    <SliderWrapper ref={slideWrapperRef} className={className}>
+      <SliderMainImageWrapper
+        ref={sliderMainImageWrapperRef}
+        width={imageWidth}
+      >
         {imagePaths.map((imagePath) => (
           <SliderMainImage
             key={`slider-main-${getImageFilename(imagePath)}`}
             src={imagePath}
+            width={imageWidth}
             alt={getImageFilename(imagePath)}
           />
         ))}
@@ -143,4 +150,4 @@ const ImageSliderHeight: FC<ImageSliderProps> = ({
   );
 };
 
-export default ImageSliderHeight;
+export default ImageHorizontalSlider;

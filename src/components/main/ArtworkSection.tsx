@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 
-import ImageSlider from "@components/main/artwork/ImageSlider";
-import ImageSliderMK from "@components/main/artwork/ImageSliderMK";
-import ImageSliderHeight from "./artwork/ImageSliderHeight";
+import HorizontalSlider from "@components/main/artwork/HorizontalSlider";
+import VerticalSlider from "@components/main/artwork/VerticalSlider";
+
+import { ARTWORK_IMAGE_PATHS } from "@consts/index";
 
 import { Wrapper, Title } from "@styles/main/artwork.style";
 
@@ -13,44 +14,53 @@ interface ArtworkSectionProps {
 }
 
 const ArtworkSection: FC<ArtworkSectionProps> = ({ animationend }) => {
-  const ARTWORK_IMAGE_PATHS = [
-    "images/artworks/1.png",
-    "images/artworks/2.png",
-    "images/artworks/3.png",
-  ];
+  const [artworkAnimationend, setArtworkAnimationend] = useState(false);
 
-  const [titleAnimationend, setTitleAnimationend] = useState(false);
-
-  const titleRef = useRef<HTMLSpanElement | null>(null);
+  const wrapperRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    let wrapperElement: HTMLElement;
+
+    const animationListener = () => {
+      setArtworkAnimationend(true);
+    };
+
     if (animationend) {
-      if (titleRef.current) {
-        const titleElement = titleRef.current;
+      if (wrapperRef.current) {
+        wrapperElement = wrapperRef.current;
 
-        titleElement.addEventListener("animationend", () =>
-          setTitleAnimationend(true)
-        );
+        wrapperElement.addEventListener("animationend", animationListener);
 
-        titleElement.classList.add("show");
+        wrapperElement.classList.add("show");
       }
     }
+
+    return () => {
+      if (animationend)
+        wrapperElement.removeEventListener("animationend", animationListener);
+    };
   }, [animationend]);
 
   return (
-    <Wrapper>
-      <Title ref={titleRef}>Artwork</Title>
-      <ImageSlider
+    <Wrapper ref={wrapperRef}>
+      <Title>Artwork</Title>
+      <HorizontalSlider
+        className="mobile-slider mobile"
+        imageWidth={400}
         imagePaths={ARTWORK_IMAGE_PATHS}
-        animationend={titleAnimationend}
+        animationend={artworkAnimationend}
       />
-      <ImageSliderMK
+      <HorizontalSlider
+        className="mobile-slider x-mobile"
+        imageWidth={250}
         imagePaths={ARTWORK_IMAGE_PATHS}
-        animationend={titleAnimationend}
+        animationend={artworkAnimationend}
       />
-      <ImageSliderHeight
+      <VerticalSlider
+        className="pc-slider"
+        imageHeight={600}
         imagePaths={ARTWORK_IMAGE_PATHS}
-        animationend={titleAnimationend}
+        animationend={artworkAnimationend}
       />
     </Wrapper>
   );

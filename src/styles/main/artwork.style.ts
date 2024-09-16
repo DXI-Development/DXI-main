@@ -1,8 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
+import { laptop, tablet, mobile, xMobile } from "@utils/style.util";
+
 import { COLORS } from "@consts/style";
 
-const TitleAnimation = keyframes`
+const ArtworkAnimation = keyframes`
   from {
     transform: translateY(-50px);
     opacity: 0;
@@ -24,16 +26,42 @@ export const Wrapper = styled.section`
   padding: 32px 64px;
   row-gap: 32px;
   border-radius: 4px;
+  transform: translateY(-50px);
+  opacity: 0;
+
+  ${mobile`{
+    padding: 24px 48px;
+    row-gap: 16px;
+  }`}
+
+  ${xMobile`{
+    padding: 16px 32px;
+  }`}
+
+  &.show {
+    animation: ${ArtworkAnimation} 1s forwards;
+  }
 `;
 
 export const Title = styled.span`
   color: ${COLORS.white};
-  font-size: 3rem;
+  font-size: 6rem;
   font-weight: 700;
-  transform: translateY(-50px);
-  opacity: 0;
+  font-family: "Dongle";
 
-  &.show {
-    animation: ${TitleAnimation} 1s forwards;
-  }
+  ${laptop`{
+    font-size: 5rem;  
+  }`}
+
+  ${tablet`{
+    font-size: 4rem;  
+  }`}
+
+  ${mobile`{
+    font-size: 3.5rem;  
+  }`}
+
+  ${xMobile`{
+    font-size: 3rem;
+  }`}
 `;
