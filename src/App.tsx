@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import { PageWrapper } from "@styles/app.style";
 
+import IntroductionPage from "@pages/IntroductionPage";
 import MainPage from "@pages/MainPage";
 import RecruitPage from "@pages/RecruitPage";
 
@@ -18,6 +19,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" Component={MainPage} />
+        <Route path="/introduction" Component={IntroductionPage} />
         <Route path="/recruit" Component={RecruitPage} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
