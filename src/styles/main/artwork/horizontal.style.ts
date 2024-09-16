@@ -150,19 +150,19 @@ export const SliderImageButtonShadow = styled.div`
   top: 0;
   left: 0;
   width: 50px;
-  height: 50px;
+  height: 53px;
   background-color: #00000080;
   border-radius: 8px;
   z-index: 2;
 
   ${xMobile`{
     width: 40px;
-    height: 40px;  
+    height: 43px;  
   }`}
 
   @media screen and (max-width: 425px) {
     width: 30px;
-    height: 30px;
+    height: 33px;
   }
 `;
 

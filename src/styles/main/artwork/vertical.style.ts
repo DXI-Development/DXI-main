@@ -119,14 +119,14 @@ export const SliderImageButtonShadow = styled.div`
   top: 0;
   left: 0;
   width: 75px;
-  height: 75px;
+  height: 78px;
   background-color: #00000080;
   border-radius: 8px;
   z-index: 2;
 
   ${tablet`{
     width: 60px;
-    height: 60px;
+    height: 63px;
   }`};
 `;
 
@@ -134,7 +134,7 @@ export const SliderImageButtonImage = styled.img`
   width: 75px;
   height: 75px;
   border-radius: 8px;
-  fit-content: fill;
+  fit-content: cover;
 
   ${tablet`{
     width: 60px;
