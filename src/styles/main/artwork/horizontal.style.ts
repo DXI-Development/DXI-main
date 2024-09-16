@@ -60,12 +60,24 @@ export const SliderWrapper = styled.div`
       display: flex;  
     }`}
 
+    ${xMobile`{
+      display: none;
+    }`}
+  }
+
+  &.x-mobile {
+    display: none;
+
+    ${xMobile`{
+      display: flex;  
+    }`}
+
     @media screen and (max-width: 425px) {
       display: none;
     }
   }
 
-  &.x-mobile {
+  &.s-mobile {
     display: none;
 
     @media screen and (max-width: 425px) {

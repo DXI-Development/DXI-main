@@ -38,26 +38,30 @@ export const Wrapper = styled.section`
 `;
 
 export const Image = styled.img`
-  width: auto;
-  height: 400px;
+  width: 800px;
+  height: auto;
   transform: translateY(100px);
   opacity: 0;
 
   ${laptop`{
-    height: 350px;  
+    width: 750px;  
   }`}
 
   ${tablet`{
-    height: 300px;  
+    width: 550px;  
   }`}
 
   ${mobile`{
-    height: 200px;  
+    width: 400px;  
   }`}
 
   ${xMobile`{
-    height: 150px;  
+    width: 250px;  
   }`}
+
+   @media screen and (max-width: 425px) {
+    width: 200px;
+  }
 
   &.show {
     animation: ${PhraseAnimation} 0.8s forwards;

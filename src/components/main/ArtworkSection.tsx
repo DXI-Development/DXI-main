@@ -52,6 +52,12 @@ const ArtworkSection: FC<ArtworkSectionProps> = ({ animationend }) => {
       />
       <HorizontalSlider
         className="mobile-slider x-mobile"
+        imageWidth={300}
+        imagePaths={ARTWORK_IMAGE_PATHS}
+        animationend={artworkAnimationend}
+      />
+      <HorizontalSlider
+        className="mobile-slider s-mobile"
         imageWidth={250}
         imagePaths={ARTWORK_IMAGE_PATHS}
         animationend={artworkAnimationend}
