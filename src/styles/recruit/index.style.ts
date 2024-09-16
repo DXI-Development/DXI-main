@@ -1,10 +1,34 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { COLORS } from "@consts/style";
 
 import { tablet, mobile, xMobile } from "@utils/style.util";
 
 import { PageMainWrapper, InnerPage } from "@styles/app.style";
+
+const TitleAnimation = keyframes`
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+`;
+
+const ContentAnimation = keyframes`
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+`;
 
 export const PageWrapper = styled(PageMainWrapper)`
   background-color: ${COLORS.themeColor};
@@ -24,11 +48,18 @@ export const TitleWrapper = styled.div`
   border-radius: 4px;
   color: ${COLORS.white};
   word-break: keep-all;
+  transform: translateY(-50px);
+  opacity: 0;
+  animation: ${TitleAnimation} 1s forwards;
+
+  &.title-end-recruit {
+    align-items: center;
+  }
 `;
 
 export const Title = styled.div`
   display: flex;
-  column-gap: 16px;
+  column-gap: 12px;
   font-size: 2rem;
   font-weight: 700;
 
@@ -91,6 +122,12 @@ export const ContentWrapper = styled.div`
   padding: 16px 24px;
   background-color: ${COLORS.light};
   border-radius: 4px;
+  transform: translateY(-50px);
+  opacity: 0;
+
+  &.show {
+    animation: ${ContentAnimation} 1s forwards;
+  }
 
   ${mobile`{
     padding: 24px;  
