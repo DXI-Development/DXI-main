@@ -40,17 +40,6 @@ const ImageVerticalSlider: FC<ImageSliderProps> = ({
     return splitedPath[splitedPathLength - 1];
   };
 
-  const changeSliderImage = (index: number) => {
-    if (sliderMainImageWrapperRef.current) {
-      const sliderMainImageWrapper = sliderMainImageWrapperRef.current;
-
-      sliderMainImageWrapper.scroll({
-        top: index * imageHeight,
-        behavior: "smooth",
-      });
-    }
-  };
-
   const handleClickImageButton = (index: number) => (e: React.MouseEvent) =>
     setCurrentImageIndex(index);
 
@@ -103,6 +92,17 @@ const ImageVerticalSlider: FC<ImageSliderProps> = ({
   }, [imagePaths.length]);
 
   useEffect(() => {
+    const changeSliderImage = (index: number) => {
+      if (sliderMainImageWrapperRef.current) {
+        const sliderMainImageWrapper = sliderMainImageWrapperRef.current;
+
+        sliderMainImageWrapper.scroll({
+          top: index * imageHeight,
+          behavior: "smooth",
+        });
+      }
+    };
+
     changeSliderImage(currentImageIndex);
 
     intervalIdRef.current && clearInterval(intervalIdRef.current);
@@ -117,8 +117,7 @@ const ImageVerticalSlider: FC<ImageSliderProps> = ({
     return () => {
       intervalIdRef.current && clearInterval(intervalIdRef.current);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentImageIndex, imagePaths.length]);
+  }, [imageHeight, currentImageIndex, imagePaths.length]);
 
   return (
     <SliderWrapper ref={slideWrapperRef} className={className}>

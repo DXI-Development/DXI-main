@@ -40,17 +40,6 @@ const ImageHorizontalSlider: FC<ImageSliderProps> = ({
     return splitedPath[splitedPathLength - 1];
   };
 
-  const changeSliderImage = (index: number) => {
-    if (sliderMainImageWrapperRef.current) {
-      const sliderMainImageWrapper = sliderMainImageWrapperRef.current;
-
-      sliderMainImageWrapper.scroll({
-        left: index * imageWidth,
-        behavior: "smooth",
-      });
-    }
-  };
-
   const handleClickImageButton = (index: number) => (e: React.MouseEvent) =>
     setCurrentImageIndex(index);
 
@@ -103,6 +92,17 @@ const ImageHorizontalSlider: FC<ImageSliderProps> = ({
   }, [imagePaths.length]);
 
   useEffect(() => {
+    const changeSliderImage = (index: number) => {
+      if (sliderMainImageWrapperRef.current) {
+        const sliderMainImageWrapper = sliderMainImageWrapperRef.current;
+
+        sliderMainImageWrapper.scroll({
+          left: index * imageWidth,
+          behavior: "smooth",
+        });
+      }
+    };
+
     changeSliderImage(currentImageIndex);
 
     intervalIdRef.current && clearInterval(intervalIdRef.current);
@@ -117,7 +117,7 @@ const ImageHorizontalSlider: FC<ImageSliderProps> = ({
     return () => {
       intervalIdRef.current && clearInterval(intervalIdRef.current);
     };
-  }, [currentImageIndex, imagePaths.length]);
+  }, [imageWidth, currentImageIndex, imagePaths.length]);
 
   return (
     <SliderWrapper ref={slideWrapperRef} className={className}>
