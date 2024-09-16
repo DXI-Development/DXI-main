@@ -1,11 +1,21 @@
 {
   "short_name": "Deus X Idol",
-  "name": "데우스X아이돌 - Deus X Idol",
+  "name": "스튜디오 EDDA",
   "icons": [
     {
-      "src": "images/icons/icon.png",
+      "src": "favicon.ico",
+      "type": "image/ico",
+      "sizes": "48x48"
+    },
+    {
+      "src": "favicon-16x16.png",
       "type": "image/png",
-      "sizes": "125x125"
+      "sizes": "16x16"
+    },
+    {
+      "src": "favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
     }
   ],
   "start_url": ".",
