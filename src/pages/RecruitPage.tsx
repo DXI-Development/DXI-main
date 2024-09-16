@@ -22,6 +22,8 @@ import type { FC } from "react";
 import type { Recruitment, Team } from "@customTypes/data.type";
 
 const RecruitPage: FC = () => {
+  const TITLE = "스튜디오 EDDA - 팀원 모집";
+
   const {
     recruitIndex,
     totalRecruitPositionCount,
@@ -34,6 +36,7 @@ const RecruitPage: FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = TITLE;
   }, []);
 
   return (
@@ -41,14 +44,20 @@ const RecruitPage: FC = () => {
       <Page>
         <TitleWrapper>
           <Title>
-            {`${TEAM_NAME} ${recruitIndex}차 모집 (${dayjs(startDate).format(
-              "YY-MM-DD"
-            )} ~ ${dayjs(endDate).format("YY-MM-DD")}`}
-            )
+            <span>{`${TEAM_NAME} ${recruitIndex}차 모집`}</span>
+            <span>
+              {`(${dayjs(startDate).format("MM-DD HH:mm")} ~ ${dayjs(
+                endDate
+              ).format("MM-DD HH:mm")}`}
+              )
+            </span>
           </Title>
           <TitleDescription>
-            현재 {TEAM_NAME}에서는 다양한 분야에서 열정있는 분들을 모시고
-            있습니다. 많은 지원 바랍니다! :)
+            <span>
+              현재 {TEAM_NAME}에서는 다양한 분야에서 열정있는 분들을 모시고
+              있습니다.
+            </span>
+            <span>많은 지원 바랍니다! :)</span>
           </TitleDescription>
         </TitleWrapper>
         <ContentWrapper>

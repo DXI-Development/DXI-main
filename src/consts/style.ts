@@ -6,7 +6,7 @@ export const BUTTON_COLORS: Color = {
 };
 
 export const COLORS: Color = {
-  themeDarkColor: "#b57eca",
+  themeDarkColor: "#be7acf",
   themeColor: "#f8e0f7",
   primary: "#3b71ca",
   secondary: "#9fa6b2",
