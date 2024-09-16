@@ -15,13 +15,12 @@ export const SYNOPSIS = [
 ];
 
 export const ARTWORK_IMAGE_PATHS = [
-  "images/artworks/1.png",
-  "images/artworks/2.png",
-  "images/artworks/3.png",
-  "images/artworks/4.png",
-  "images/artworks/5.png",
+  "images/artworks/characters/roki.jpeg",
+  "images/artworks/characters/temp/zeus.jpeg",
+  "images/artworks/characters/temp/odin.png",
+  "images/artworks/characters/temp/poseidon.png",
 ];
 
 export const HEADER_LOGO_PATH = "images/logos/studio-header-logo.png";
 
-export const LOGO_PATH = "images/logos/logo-with-color.png";
+export const LOGO_PATH = "images/logos/typo.png";
